@@ -1,4 +1,4 @@
-# 코쇠 삽화 스킬을 Claude Code / Codex 스킬 폴더에 설치한다 (Windows PowerShell).
+﻿# 코쇠 삽화 스킬을 Claude Code / Codex 스킬 폴더에 설치한다 (Windows PowerShell).
 # 사용법: .\install.ps1            (둘 다 설치)
 #         .\install.ps1 -Target claude
 #         .\install.ps1 -Target codex

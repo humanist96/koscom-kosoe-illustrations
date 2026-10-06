@@ -167,6 +167,31 @@ bash koscom-kosoe-illustrations/scripts/gen_image.sh my-prompt.txt out/01-topic.
 
 ---
 
+## PPT 덱에 넣기
+
+이미 만든 .pptx 덱에 코쇠 삽화를 채우고 애니메이션까지 붙일 수 있습니다.
+
+```text
+코쇠 삽화 스킬로 이 덱(경로.pptx)의 '일러스트 대기' 자리를 채우고,
+장표마다 내용에 맞는 스팟 그림도 넣어줘. 메인 그림에는 레이어 애니메이션도 붙여줘.
+```
+
+| 기능 | 내용 |
+|---|---|
+| 메인 일러스트 | 비워 둔 그림 자리를 같은 위치·크기로 교체 |
+| 스팟 일러스트 | 흰 배경 장표의 제목 오른쪽 빈 띠를 자동 측정해, 장표 메시지에 맞는 작은 코쇠 그림 배치 |
+| ① 등장 애니메이션 | 스팟은 서서히, 메인은 닦아내듯 — 클릭 없이 자동 재생 |
+| ③ 레이어 애니메이션 | 그림을 배경과 움직일 요소로 나눠, 코쇠가 걸어 들어오고 요소가 차례로 놓이게 함 (끝 장면 = 원본 그림) |
+| 폰트 점검 | 한글이 쓰는 테마 동아시아 폰트까지 확인·교체 (예: KoPub돋움체) |
+| 검수 | PowerPoint 렌더링, 슬라이드 동영상 내보내기로 프레임 단위 확인 |
+
+![레이어 애니메이션 예시](examples/animation/bridge-layers.gif)
+
+도구는 [scripts/pptx/](koscom-kosoe-illustrations/scripts/pptx/), 절차와 함정은 [pptx-workflow.md](koscom-kosoe-illustrations/references/pptx-workflow.md)에 있습니다.
+렌더링·애니메이션·동영상 도구는 **Windows + PowerPoint**가 필요합니다(Python: `python-pptx`, `Pillow`, `numpy` / 프레임 검수: `ffmpeg`).
+
+---
+
 ## 워크플로
 
 1. 글·문서·스크린샷을 읽고 핵심 주장과 인식 전환 지점을 찾는다
@@ -190,7 +215,8 @@ bash koscom-kosoe-illustrations/scripts/gen_image.sh my-prompt.txt out/01-topic.
 ├── character/                       # 캐릭터 시트와 시안, 시트 생성 프롬프트
 ├── examples/
 │   ├── images/                      # README 예시 이미지
-│   └── prompts/                     # 예시 생성 프롬프트 원문
+│   ├── prompts/                     # 예시 생성 프롬프트 원문
+│   └── animation/                   # 레이어 애니메이션 예시 GIF
 └── koscom-kosoe-illustrations/      # ← 실제로 설치되는 스킬
     ├── SKILL.md
     ├── agents/openai.yaml           # Codex 표시 정보
@@ -202,8 +228,20 @@ bash koscom-kosoe-illustrations/scripts/gen_image.sh my-prompt.txt out/01-topic.
     │   ├── kosoe-ip.md
     │   ├── composition-patterns.md   # 금융 IT 주제별 은유 씨앗 포함
     │   ├── prompt-template.md
-    │   └── qa-checklist.md
-    └── scripts/gen_image.sh          # Codex CLI 이미지 생성 래퍼
+    │   ├── qa-checklist.md
+    │   └── pptx-workflow.md          # PPT 덱 적용 절차·함정
+    └── scripts/
+        ├── gen_image.sh              # Codex CLI 이미지 생성 래퍼
+        └── pptx/
+            ├── render.ps1            # 슬라이드 → PNG
+            ├── inspect_deck.py       # 도형 목록 + 스팟 넣을 빈 띠 측정
+            ├── insert_images.py      # 메인 교체 + 스팟 배치 (plan.json)
+            ├── grid.py               # 레이어 좌표용 격자
+            ├── layers.py             # 그림 → 배경/움직일 레이어 분리
+            ├── place_layers.py       # 레이어를 슬라이드에 겹쳐 배치
+            ├── animate.ps1           # 타임라인 JSON → PowerPoint 애니메이션
+            ├── export_video.ps1      # 지정 슬라이드 → MP4 (검수용)
+            └── theme_fonts.py        # 테마 폰트(latin/ea) 확인·교체
 ```
 
 ---

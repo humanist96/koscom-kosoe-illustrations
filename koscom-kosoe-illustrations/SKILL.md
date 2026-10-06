@@ -18,6 +18,7 @@ description: 코스콤 "코쇠" IP로 한국어 본문 삽화를 만든다. 사�
 - `references/composition-patterns.md` — 구조 유형, 금융 IT 은유 풀, 반복 금지 규칙
 - `references/prompt-template.md` — 이미지 생성 프롬프트 템플릿과 편집 프롬프트
 - `references/qa-checklist.md` — 생성 후 검수와 재생성 규칙
+- `references/pptx-workflow.md` — **기존 PPT 덱에 넣을 때**: 대기 자리 교체, 장표별 스팟, 등장·레이어 이동 애니메이션, 테마 폰트, 동영상 검수
 - `assets/kosoe-character-sheet.png` — **캐릭터 일관성용 기준 이미지. 생성할 때마다 레퍼런스로 첨부한다.**
 - `assets/examples/` — 화풍 밀도 보정용 예시. 기본 경로에서 열지 말고, 구도를 베끼지 않는다.
 
@@ -83,6 +84,14 @@ assets/<article-slug>-illustrations/02-topic-name.png
 ```
 
 생성에 쓴 프롬프트도 같은 폴더 `prompts/`에 남겨 두면 재생성이 쉽다.
+
+## PPT 덱에 넣을 때
+
+사용자가 .pptx를 주며 "그림 넣어줘 / 장표마다 보완해줘 / 애니메이션"을 요청하면 `references/pptx-workflow.md`를 따른다.
+요약: `scripts/pptx/render.ps1`·`inspect_deck.py`로 덱과 빈 자리 파악 → 메인(대기 자리)·스팟(제목 오른쪽 띠) 기획 →
+병렬 생성 → `insert_images.py`로 삽입 → 렌더 검수 → 애니메이션(① 등장 / ③ `layers.py`·`place_layers.py`·`animate.ps1`) →
+`export_video.ps1`로 프레임 검수 → 필요하면 `theme_fonts.py`로 한글(ea) 폰트 정리. 원본은 덮어쓰지 않고 새 이름으로 저장한다.
+렌더링·애니메이션 도구는 Windows + PowerPoint에서만 동작한다.
 
 ## 전달 형식
 
