@@ -1,0 +1,20 @@
+Generate one standalone 16:9 horizontal CHARACTER MODEL SHEET for a new recurring illustration character.
+
+Style: pure white background, minimalist hand-drawn pen line art with slightly wobbly lines, lots of white space, clean absurd product-sketch feeling. No gradients, no shadows, no paper texture, no 3D, no vector-perfect commercial mascot look, not cute, not childish.
+
+Character name: 코쇠 (Kosoe).
+Design:
+- Body: a small solid charcoal-gray (#5A5555) slightly tall rounded pebble-block shape, a bit like a small server unit with soft corners, slightly uneven hand-drawn outline. Filled solid gray, not black.
+- On top of the head: one small bright orange (#E96717) chevron shape ">" standing up like a crest or antenna, always pointing to the right (forward). This orange chevron is the only colored part of the character.
+- Two white dot eyes, no mouth or a tiny flat line mouth. Blank, deadpan, serious expression.
+- Very thin black stick legs and thin stick arms, small simple feet.
+- No clothes, no tie, no hat, no sparkles in eyes, no blush.
+Personality: a quiet, diligent operator of capital-market IT infrastructure. Serious, reliable, slightly absurd, always moving forward.
+
+Layout of the sheet (sparse, generous spacing, no grid boxes, no borders):
+- Left: front view, standing.
+- Next: side view, walking forward to the right.
+- Center-right: 4 small action poses: (1) carrying a heavy small data block on its back, (2) pulling a big lever with both arms, (3) peering through a magnifying glass, (4) hammering a bolt into a pipe.
+- Short handwritten Korean labels in dark gray: "코쇠", "앞으로 >" in orange near the chevron, "단단한 몸" in blue near the body, "무표정" near the eyes.
+
+Use at most 5 short labels. Do not add a title in the top-left corner. Do not draw any company logo.
