@@ -42,6 +42,10 @@ fi
 
 if [ -n "$SRC" ] && [ -s "$SRC" ]; then
   cp "$SRC" "$OUT_DIR/$OUT_NAME"
+  # 가끔 투명 배경(RGBA)으로 나오면 문서에서 검게 보이므로 흰 배경으로 합친다
+  python -c "import sys;from PIL import Image;im=Image.open(sys.argv[1])
+if im.mode in ('RGBA','LA','P'):
+    im=im.convert('RGBA');bg=Image.new('RGBA',im.size,(255,255,255,255));bg.alpha_composite(im);bg.convert('RGB').save(sys.argv[1])" "$OUT_DIR/$OUT_NAME" 2>/dev/null || true
   rm -f "$LOG"
   echo "OK  $OUT_DIR/$OUT_NAME"
 else
