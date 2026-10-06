@@ -84,7 +84,7 @@
 ## 설치
 
 ```bash
-git clone https://github.com/<your-account>/koscom-kosoe-illustrations.git
+git clone https://github.com/humanist96/koscom-kosoe-illustrations.git
 cd koscom-kosoe-illustrations
 ./install.sh            # Claude Code + Codex 둘 다
 ```
